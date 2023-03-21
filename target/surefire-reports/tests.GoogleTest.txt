@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: tests.GoogleTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 1, Errors: 0, Skipped: 3, Time elapsed: 33.75 sec <<< FAILURE!
+getResult(tests.GoogleTest)  Time elapsed: 1.366 sec  <<< FAILURE!
+java.lang.NullPointerException
+	at tests.GoogleTest.getResult(GoogleTest.java:101)
+

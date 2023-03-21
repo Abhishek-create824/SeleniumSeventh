@@ -33,7 +33,7 @@ public class Base {
     }
 
     public WebDriver capabilities() throws IOException {
-        FileInputStream fis=new FileInputStream(System.getProperty("user.dir")+"//src//main//java//resources//global.properties");
+        FileInputStream fis=new FileInputStream(System.getProperty("user.dir")+"//src//main//java//resources/global.properties");
         props=new Properties();
         props.load(fis);
         String browsername=props.getProperty("browser");

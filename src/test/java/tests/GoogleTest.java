@@ -21,7 +21,7 @@ import java.io.IOException;
 
 public class GoogleTest extends Base {
 
-    public static Logger log= LogManager.getLogger(GoogleTest.class.getName());
+    public static Logger log = LogManager.getLogger(GoogleTest.class.getName());
 
     ExtentReports extent;
 
@@ -29,32 +29,31 @@ public class GoogleTest extends Base {
 
     @BeforeTest
     public void startReport() throws IOException {
-     driver=capabilities();
-     log.info("capabilities of driver");
-     extent=new ExtentReports(System.getProperty("user.dir")+"//reports/google.html",true);
+        driver = capabilities();
+        log.info("capabilities of driver");
+        extent = new ExtentReports(System.getProperty("user.dir") + "//reports/google.html", true);
         log.info("report location");
-     extent.addSystemInfo("tester","abhishek");
+        extent.addSystemInfo("tester", "abhishek");
         log.info("environment variables");
-     extent.loadConfig(new File(System.getProperty("user.dir")+"//extent-config.xml"));
+        extent.loadConfig(new File(System.getProperty("user.dir") + "//extent-config.xml"));
         log.info("report structure");
     }
 
     @Test
-    public void test1()
-    {
-        logger=extent.startTest("pass test");
+    public void test1() {
+        logger = extent.startTest("pass test");
         log.info("test is passed");
-driver.get(props.getProperty("url"));
+        driver.get(props.getProperty("url"));
         log.info("navigating to url");
-GooglePageObject gpo=new GooglePageObject(driver);
+        GooglePageObject gpo = new GooglePageObject(driver);
         log.info("object creation");
-gpo.getSearchItem().sendKeys("latest songs 2023");
+        gpo.getSearchItem().sendKeys("latest songs 2023");
         log.info("item is displayed");
-gpo.getSearch().sendKeys(Keys.ENTER);
+        gpo.getSearch().sendKeys(Keys.ENTER);
         log.info("key is entered");
     }
 
-    @Test
+//    @Test
 //    public void test2()
 //    {
 //logger=extent.startTest("fail test");
@@ -75,29 +74,31 @@ gpo.getSearch().sendKeys(Keys.ENTER);
 //logger=extent.startTest("skip test");
 //        log.info("test skip");
 //throw new SkipException("test is skipped");
-//    }
+   // }
 
     @AfterTest
-    public void endReport()
-    {
-extent.flush();
-extent.close();
+    public void endReport() {
+        extent.flush();
+        extent.close();
         log.info("closing report");
-driver.close();
+        driver.close();
         log.info("closing current window");
-driver.quit();
+        driver.quit();
         log.info("closing all window");
     }
 
     @AfterMethod
     public void getResult(ITestResult result) throws IOException {
-    if(result.getStatus()==result.FAILURE)
-    {
-        logger.log(LogStatus.FAIL,"test is failed"+result.getName());
-        logger.log(LogStatus.FAIL,"test is failed"+result.getThrowable());
-        String screen=Base.getScreenshot(driver,result.getName());
-        logger.log(LogStatus.FAIL,logger.addScreencast(screen));
+        if(result.getStatus()== ITestResult.FAILURE)
+        {
+            logger.log(LogStatus.FAIL,"Test is failed"+result.getName());
+            logger.log(LogStatus.FAIL,"Test is failed"+result.getThrowable());
+            String screensource=Base.getScreenshot(driver,result.getName());
+            logger.log(LogStatus.FAIL,logger.addScreencast(screensource));
+        }
+        else {
+            logger.log(LogStatus.SKIP,"Test is skipped"+result.getName());
+        }
+        extent.endTest(logger);
     }
-        logger.log(LogStatus.SKIP,"test is skipped"+result.getName());
     }
-}
