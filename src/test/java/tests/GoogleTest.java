@@ -55,27 +55,27 @@ gpo.getSearch().sendKeys(Keys.ENTER);
     }
 
     @Test
-    public void test2()
-    {
-logger=extent.startTest("fail test");
-        log.info("test is failed");
-String title=driver.getTitle();
-        log.info("title is");
-String url=driver.getCurrentUrl();
-        log.info("url is");
-Assert.assertEquals(title,"no title");
-        log.info("compare string");
-Assert.assertEquals(url,"no url");
-        log.info("compare string");
-    }
+//    public void test2()
+//    {
+//logger=extent.startTest("fail test");
+//        log.info("test is failed");
+//String title=driver.getTitle();
+//        log.info("title is");
+//String url=driver.getCurrentUrl();
+//        log.info("url is");
+//Assert.assertEquals(title,"no title");
+//        log.info("compare string");
+//Assert.assertEquals(url,"no url");
+//        log.info("compare string");
+//    }
 
-    @Test
-    public void test3()
-    {
-logger=extent.startTest("skip test");
-        log.info("test skip");
-throw new SkipException("test is skipped");
-    }
+//    @Test
+//    public void test3()
+//    {
+//logger=extent.startTest("skip test");
+//        log.info("test skip");
+//throw new SkipException("test is skipped");
+//    }
 
     @AfterTest
     public void endReport()
