@@ -1,0 +1,47 @@
+pipeline {
+agent any  
+options {
+timestamps()
+}
+tools {
+
+}
+stages {
+stage('Checkout SCM ') {
+when {
+branch 'master'
+}
+steps {
+git CredentialsId: '' , url: ''
+}
+}
+stage(''Clean) {
+steps {
+bat "mvn clean"
+}
+}
+stage('Compile') {
+steps {
+bat "mvn compile"
+}
+}
+stage('Test') {
+steps {
+bat "mvn test -DsuiteXmlFile=testng.xml"
+}
+}
+stage('Send Email') {
+steps {
+echo "Sending Email"
+}
+}
+post {
+failure {
+emailTo: '',
+subject: '',
+body: readFile(''),
+mimeType: 'text/html'
+}
+}
+}
+}
