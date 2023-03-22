@@ -3,9 +3,6 @@ agent any
 options {
 timestamps()
 }
-tools {
-
-}
 stages {
 stage('Checkout SCM ') {
 when {
@@ -37,9 +34,9 @@ echo "Sending Email"
 }
 post {
 failure {
-emailTo: 'abhishek260297@gmail.com',
+email To: 'abhishek260297@gmail.com',
 subject: 'Test',
-body: readFile('C:\Users\a5150\JenkinsDirectory\.jenkins\untitled\SeleniumSeventh\target\surefire-reports\emailable-report.html'),
+body: readFile("target/surefire-reports/emailable-report.html"),
 mimeType: 'text/html'
 }
 }
