@@ -12,7 +12,7 @@ when {
 branch 'master'
 }
 steps {
-git CredentialsId: '' , url: ''
+git CredentialsId: 'Abhishek Git credentials' , url: 'https://github.com/Abhishek-create824/SeleniumSeventh.git'
 }
 }
 stage(''Clean) {
@@ -37,9 +37,9 @@ echo "Sending Email"
 }
 post {
 failure {
-emailTo: '',
-subject: '',
-body: readFile(''),
+emailTo: 'abhishek260297@gmail.com',
+subject: 'Test',
+body: readFile('C:\Users\a5150\JenkinsDirectory\.jenkins\untitled\SeleniumSeventh\target\surefire-reports\emailable-report.html'),
 mimeType: 'text/html'
 }
 }
