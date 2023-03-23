@@ -38,13 +38,6 @@ pipeline {
                  }
              }
                           }
-                          
-         stage('User input') {
-             input {
-                 message "Should we continue?"
-                 ok "Yes"
-                   }
-                             }
          stage('Email') {
             steps {
             echo "Sending email "
