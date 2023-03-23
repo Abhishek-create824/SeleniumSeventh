@@ -12,7 +12,7 @@ steps {
 git CredentialsId: 'Abhishek Git credentials' , url: 'https://github.com/Abhishek-create824/SeleniumSeventh.git'
 }
 }
-stage(''Clean) {
+stage('Clean') {
 steps {
 bat "mvn clean"
 }
