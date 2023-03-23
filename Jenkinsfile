@@ -1,17 +1,11 @@
 pipeline {
     agent any
-    options {
-       timestamps()
-    }
    tools {
        jdk 'Java 11'
        maven 'Maven 3.6.3'
      }
      stages {
          stage('Checkout') {
-            when {
-             branch 'master'
-            }
              steps  {
                 git credentialsId: 'Abhishek Git credentials' , url: 'https://github.com/Abhishek-create824/SeleniumSeventh.git'
                      }
