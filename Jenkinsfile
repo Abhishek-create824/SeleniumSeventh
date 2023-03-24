@@ -25,32 +25,32 @@ pipeline {
                 bat "mvn test -DsuiteXmlFile=testng.xml"
                     }
                           } 
-        stage('Download') {
-            steps {
-            echo "Sending email "
-                  }
-       post {
-        success {
-                  mail to: 'abhishek260297@gmail.com',
-                  subject: "Email Report from - '${env.JOB_NAME}'",
-                  body: readFile("target/surefire-reports/emailable-report.html"),
-                  mimeType:'text/html'
-                 }
-             }
-                          }
-         stage('Email') {
-            steps {
-            echo "Sending email "
-                  }
-       post {
-        success {
-                  mail to: 'abhishek260297@gmail.com',
-                  subject: "Email Report from - '${env.JOB_NAME}'",
-                  body: readFile("target/index.html"),
-                  mimeType:'text/html'
-                 }
-}
-}
+//         stage('Download') {
+//             steps {
+//             echo "Sending email "
+//                   }
+//        post {
+//         success {
+//                   mail to: 'abhishek260297@gmail.com',
+//                   subject: "Email Report from - '${env.JOB_NAME}'",
+//                   body: readFile("target/surefire-reports/emailable-report.html"),
+//                   mimeType:'text/html'
+//                  }
+//              }
+                 //         }
+//          stage('Email') {
+//             steps {
+//             echo "Sending email "
+//                   }
+//        post {
+//         success {
+//                   mail to: 'abhishek260297@gmail.com',
+//                   subject: "Email Report from - '${env.JOB_NAME}'",
+//                   body: readFile("target/index.html"),
+//                   mimeType:'text/html'
+//                  }
+// }
+// }
 
 }
 }
